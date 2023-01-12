@@ -15,15 +15,16 @@ router.get("/", (req, res) => {
 //     const result = await CarModel.find({});
 //     res.status(200).send(result)
 // })
-// router.delete("/:id", (req, res) => {
-//     CarModel.findOneAndRemove({}, (err, results) =>{
-//         if(err){
-//             res.status(500).send(err);
-//         } else {
-//             res.status(200).send(results)
-//         }
-//     })
-// })
+router.delete("/:id", (req, res) => {
+    const id = req.params.id
+    CarModel.findByIdAndRemove(id, (err, results) =>{
+        if(err){
+            res.status(500).send(err);
+        } else {
+            res.status(200).send(results)
+        }
+    })
+})
 
 router.post("/", (req, res) => {
     const { model, color, year } = req.body;
