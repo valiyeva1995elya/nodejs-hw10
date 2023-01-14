@@ -79,5 +79,5 @@ change_owner.addEventListener("click", () => {
         body: JSON.stringify(payload)
     })
         .then(() => drawCars())
-        .catch(() => alert("products create error"));
+        .catch(() => alert("err"));
 })
