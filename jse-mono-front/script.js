@@ -1,5 +1,6 @@
 const carsContainer = document.querySelector("#cars_container");
 const usersContainer = document.querySelector("#users_container");
+const change_owner = document.querySelector("#change_owner");
 
 const BASE_URL = "http://localhost:8080";
 
@@ -31,7 +32,6 @@ const drawCars = async () => {
     carsContainer.innerHTML = "";
     usersContainer.innerHTML = "";
 
-
     for (const car of cars) {
         carsContainer.innerHTML += `
             <div class="car_item">
@@ -42,14 +42,9 @@ const drawCars = async () => {
                 <p>Current owner: ${car.owner?.fullName || ""}</p>
                 <p>Owners history:</p> 
                 ${car.ownersHistory.map(item => `<li> ${item?.fullName}</li>`).join("")}
-        
             </div>
-               
         `
-
     }
-
-
     for (const user of users) {
         usersContainer.innerHTML += `
             <div class="user_item">
@@ -67,16 +62,15 @@ const drawCars = async () => {
 drawCars()
 
 change_owner.addEventListener("click", () => {
-    const newProductsName = document.querySelector("#new_products_name").value;
-    const newProductsPrice = document.querySelector("#new_products_price").value;
-    const checkboxCategory = document.querySelector(".checkbox");
+    const idCar = document.querySelector("#id_car").value;
+    const idUser = document.querySelector("#id_user").value;
     
     const payload = {
-        name: newProductsName,
-        price: newProductsPrice,
-        categoryId: checkboxCategory.textContent,
+        newOwnerId: idUser,
+        carId: idCar,
+        
     };
-    fetch(BASE_URL + "/products", {
+    fetch(BASE_URL + "/cars/changeOwner", {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -84,6 +78,6 @@ change_owner.addEventListener("click", () => {
         method: "post",
         body: JSON.stringify(payload)
     })
-        .then(() => loadData())
+        .then(() => drawCars())
         .catch(() => alert("products create error"));
 })
