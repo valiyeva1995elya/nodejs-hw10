@@ -1,0 +1,54 @@
+body{
+    background-color: rgb(214, 214, 214);
+}
+h1{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+.blocks{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+.car_item{
+    box-shadow: 0 0 5px gray;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+.user_item{
+    box-shadow: 0 0 5px gray;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+.block_change{
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    margin: 0 auto;
+}
+input{
+    width: 150px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(175, 175, 175);
+}
+button{
+    width: 150px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: rgb(190, 184, 184);
+    color: white;
+    border: none;
+    box-shadow: 0 0 5px gray;
+}
